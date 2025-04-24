@@ -1,5 +1,6 @@
 package com.aloha.DTO;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +23,21 @@ public class Board {
 	@NonNull private String content;
 	private Date createdAt;
 	private Date updatedAt;
-	
+	private String createdAtFmt;
+	private String updatedAtFmt;
+
+	public String getCreatedAtFmt() {
+		return dateFormat(createdAt);
+	}
+	public String getUpdatedAtFmt() {
+		return dateFormat(updatedAt);
+	}
+
+	public static String dateFormat(Date date) {
+		if (date == null) return "";
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return format.format(date);
+	}
+
 	
 }
